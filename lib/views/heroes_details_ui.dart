@@ -6,6 +6,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:particles_flutter/particles_flutter.dart';
 import 'package:rd_test_flutter_heroes/controllers/heroes_details_controller.dart';
 import 'package:rd_test_flutter_heroes/models/heroes_model.dart';
 
@@ -66,6 +67,13 @@ class HeroesDetailsUI extends StatelessWidget {
               : Stack(
                   alignment: Alignment.center,
                   children: [
+                    CircularParticle(
+                      height: size.height,
+                      width: size.width,
+                      isRandomColor: false,
+                      isRandSize: true,
+                      particleColor: color,
+                    ),
                     if (isMarvel || isDC)
                       Opacity(
                         opacity: 0.1,
