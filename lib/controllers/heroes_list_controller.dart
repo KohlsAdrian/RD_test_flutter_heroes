@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -76,6 +78,14 @@ class HeroesListController extends GetxController {
   void toggleChips() {
     _showChips = !_showChips;
     update();
+  }
+
+  void randomHero(Iterable<HeroesModel> heroes) {
+    if (heroes.isNotEmpty) {
+      final random = Random().nextInt(heroes.length);
+      final hero = heroes.elementAt(random);
+      onTapHero(hero);
+    }
   }
 
   void onTapHero(HeroesModel hero) => Get.to(

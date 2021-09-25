@@ -17,59 +17,63 @@ class HeroesListUI extends StatelessWidget {
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context);
     final size = mq.size;
-    return Scaffold(
-      backgroundColor: Colors.grey.withOpacity(0.3),
-      body: GetBuilder<HeroesListController>(
-        init: HeroesListController(),
-        builder: (controller) {
-          Iterable<HeroesModel> heroes = controller.heroes;
+    return GetBuilder<HeroesListController>(
+      init: HeroesListController(),
+      builder: (controller) {
+        Iterable<HeroesModel> heroes = controller.heroes;
 
-          final publishers = Set.of(heroes.map((e) => e.biography.publisher));
-          final races = Set.of(heroes.map((e) => e.appearance.race));
-          final gender = Set.of(heroes.map((e) => e.appearance.gender));
+        final publishers = Set.of(heroes.map((e) => e.biography.publisher));
+        final races = Set.of(heroes.map((e) => e.appearance.race));
+        final gender = Set.of(heroes.map((e) => e.appearance.gender));
 
-          final hasPublishFilter = controller.hasPublishFilter;
-          final hasRaceFilter = controller.hasRaceFilter;
-          final hasGenderFilter = controller.hasGenderFilter;
+        final hasPublishFilter = controller.hasPublishFilter;
+        final hasRaceFilter = controller.hasRaceFilter;
+        final hasGenderFilter = controller.hasGenderFilter;
 
-          final hasFilter =
-              hasPublishFilter || hasRaceFilter || hasGenderFilter;
+        final hasFilter = hasPublishFilter || hasRaceFilter || hasGenderFilter;
 
-          final search = controller.searchController.text.toLowerCase();
-          if (search.isNotEmpty) {
-            heroes = heroes.where(
-              (h) {
-                final name = h.safeName.toLowerCase();
-                final publisher = h.biography.publisher.toLowerCase();
+        final search = controller.searchController.text.toLowerCase();
+        if (search.isNotEmpty) {
+          heroes = heroes.where(
+            (h) {
+              final name = h.safeName.toLowerCase();
+              final publisher = h.biography.publisher.toLowerCase();
 
-                return name.contains(search) || publisher.contains(search);
-              },
-            );
-          } else {
-            if (hasFilter) {
-              if (hasGenderFilter) {
-                heroes = heroes.where(
-                    (h) => controller.isGenderSelected(h.appearance.gender));
-              }
-              if (hasRaceFilter) {
-                heroes = heroes
-                    .where((h) => controller.isRaceSelected(h.appearance.race));
-              }
-              if (hasPublishFilter) {
-                heroes = heroes.where((h) =>
-                    controller.isPublisherSelected(h.biography.publisher));
-              }
+              return name.contains(search) || publisher.contains(search);
+            },
+          );
+        } else {
+          if (hasFilter) {
+            if (hasGenderFilter) {
+              heroes = heroes.where(
+                  (h) => controller.isGenderSelected(h.appearance.gender));
+            }
+            if (hasRaceFilter) {
+              heroes = heroes
+                  .where((h) => controller.isRaceSelected(h.appearance.race));
+            }
+            if (hasPublishFilter) {
+              heroes = heroes.where(
+                  (h) => controller.isPublisherSelected(h.biography.publisher));
             }
           }
+        }
 
-          final colors = [
-            if (heroes.firstWhereOrNull((h) => h.isMarvel) != null) Colors.pink,
-            if (heroes.firstWhereOrNull((h) => h.isDC) != null) Colors.blue,
-            if (heroes.firstWhereOrNull((h) => !h.isMarvel && !h.isDC) != null)
-              Colors.green,
-          ];
+        final colors = [
+          if (heroes.firstWhereOrNull((h) => h.isMarvel) != null) Colors.pink,
+          if (heroes.firstWhereOrNull((h) => h.isDC) != null) Colors.blue,
+          if (heroes.firstWhereOrNull((h) => !h.isMarvel && !h.isDC) != null)
+            Colors.green,
+        ];
 
-          return controller.loading
+        return Scaffold(
+          backgroundColor: Colors.grey.withOpacity(0.3),
+          floatingActionButton: FloatingActionButton.extended(
+            onPressed: () => controller.randomHero(heroes),
+            label: const Text('Random Hero'),
+            icon: const Icon(Icons.quiz),
+          ),
+          body: controller.loading
               ? const Center(
                   child: CircularProgressIndicator(
                     color: Colors.purple,
@@ -423,9 +427,9 @@ class HeroesListUI extends StatelessWidget {
                       ],
                     ),
                   ],
-                );
-        },
-      ),
+                ),
+        );
+      },
     );
   }
 }
