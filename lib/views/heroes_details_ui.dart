@@ -326,6 +326,7 @@ class _HeroAppearanceWidget extends StatelessWidget {
                   color: color,
                 )
               : Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Row(
                       children: [
@@ -671,7 +672,7 @@ class _HeroConnectionsWidget extends StatelessWidget {
                   color: color,
                 )
               : Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
