@@ -32,11 +32,16 @@ A new Flutter project.
 
 ### Screenshots
 
-<img src="flutter_01.png" width="195px" height="422px">
-<img src="flutter_02.png" width="195px" height="422px">
-<img src="flutter_03.png" width="195px" height="422px">
-<img src="flutter_04.png" width="195px" height="422px">
-<img src="flutter_05.png" width="195px" height="422px">
-<img src="flutter_06.png" width="195px" height="422px">
-<img src="flutter_07.png" width="195px" height="422px">
-<img src="flutter_08.png" width="195px" height="422px">
+<p float="left">
+    <img src="flutter_01.png" width="195px" height="422px">
+    <img src="flutter_02.png" width="195px" height="422px">
+    <img src="flutter_03.png" width="195px" height="422px">
+    <img src="flutter_04.png" width="195px" height="422px">
+</p>
+
+<p float="left">
+    <img src="flutter_05.png" width="195px" height="422px">
+    <img src="flutter_06.png" width="195px" height="422px">
+    <img src="flutter_07.png" width="195px" height="422px">
+    <img src="flutter_08.png" width="195px" height="422px">
+</p>
