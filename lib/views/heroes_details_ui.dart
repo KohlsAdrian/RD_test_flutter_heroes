@@ -663,6 +663,7 @@ class _HeroConnectionsWidget extends StatelessWidget {
                   color: color,
                 )
               : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
