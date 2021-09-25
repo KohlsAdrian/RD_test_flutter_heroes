@@ -1,10 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:particles_flutter/particles_flutter.dart';
 import 'package:rd_test_flutter_heroes/controllers/heroes_list_controller.dart';
 import 'package:rd_test_flutter_heroes/models/heroes_model.dart';
 
@@ -16,7 +18,7 @@ class HeroesListUI extends StatelessWidget {
     final mq = MediaQuery.of(context);
     final size = mq.size;
     return Scaffold(
-      backgroundColor: Colors.grey.withOpacity(0.7),
+      backgroundColor: Colors.grey.withOpacity(0.3),
       body: GetBuilder<HeroesListController>(
         init: HeroesListController(),
         builder: (controller) {
@@ -60,6 +62,13 @@ class HeroesListUI extends StatelessWidget {
             }
           }
 
+          final colors = [
+            if (heroes.firstWhereOrNull((h) => h.isMarvel) != null) Colors.pink,
+            if (heroes.firstWhereOrNull((h) => h.isDC) != null) Colors.blue,
+            if (heroes.firstWhereOrNull((h) => !h.isMarvel && !h.isDC) != null)
+              Colors.green,
+          ];
+
           return controller.loading
               ? const Center(
                   child: CircularProgressIndicator(
@@ -68,6 +77,13 @@ class HeroesListUI extends StatelessWidget {
                 )
               : Stack(
                   children: [
+                    CircularParticle(
+                      height: size.height,
+                      width: size.width,
+                      isRandomColor: true,
+                      isRandSize: true,
+                      randColorList: colors,
+                    ),
                     ListView.builder(
                       padding: const EdgeInsets.symmetric(
                         vertical: kToolbarHeight * 2.5,
