@@ -1,0 +1,1 @@
+enum HeroesRequestType { get }
