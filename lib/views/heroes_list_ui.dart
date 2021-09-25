@@ -26,6 +26,13 @@ class HeroesListUI extends StatelessWidget {
           final races = Set.of(heroes.map((e) => e.appearance.race));
           final gender = Set.of(heroes.map((e) => e.appearance.gender));
 
+          final hasPublishFilter = controller.hasPublishFilter;
+          final hasRaceFilter = controller.hasRaceFilter;
+          final hasGenderFilter = controller.hasGenderFilter;
+
+          final hasFilter =
+              hasPublishFilter || hasRaceFilter || hasGenderFilter;
+
           final search = controller.searchController.text.toLowerCase();
           if (search.isNotEmpty) {
             heroes = heroes.where(
@@ -37,17 +44,19 @@ class HeroesListUI extends StatelessWidget {
               },
             );
           } else {
-            if (controller.hasPublishFilter) {
-              heroes = heroes.where(
-                  (h) => controller.isPublisherSelected(h.biography.publisher));
-            }
-            if (controller.hasRaceFilter) {
-              heroes = heroes
-                  .where((h) => controller.isRaceSelected(h.appearance.race));
-            }
-            if (controller.hasGenderFilter) {
-              heroes = heroes.where(
-                  (h) => controller.isGenderSelected(h.appearance.gender));
+            if (hasFilter) {
+              if (hasGenderFilter) {
+                heroes = heroes.where(
+                    (h) => controller.isGenderSelected(h.appearance.gender));
+              }
+              if (hasRaceFilter) {
+                heroes = heroes
+                    .where((h) => controller.isRaceSelected(h.appearance.race));
+              }
+              if (hasPublishFilter) {
+                heroes = heroes.where((h) =>
+                    controller.isPublisherSelected(h.biography.publisher));
+              }
             }
           }
 
@@ -204,28 +213,32 @@ class HeroesListUI extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Container(
-                                      height: 50,
-                                      width: size.width * 0.5,
-                                      margin: const EdgeInsets.only(right: 10),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(
-                                          size.width * 0.2,
+                                    if (!hasFilter)
+                                      Container(
+                                        height: 50,
+                                        width: size.width * 0.5,
+                                        margin:
+                                            const EdgeInsets.only(right: 10),
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(
+                                            size.width * 0.2,
+                                          ),
                                         ),
-                                      ),
-                                      child: TextField(
-                                        controller: controller.searchController,
-                                        onChanged: controller.onChanged,
-                                        decoration: const InputDecoration(
-                                          border: InputBorder.none,
-                                          hintText: 'Search...',
-                                          contentPadding: EdgeInsets.symmetric(
-                                            horizontal: 20,
+                                        child: TextField(
+                                          controller:
+                                              controller.searchController,
+                                          onChanged: controller.onChanged,
+                                          decoration: const InputDecoration(
+                                            border: InputBorder.none,
+                                            hintText: 'Search...',
+                                            contentPadding:
+                                                EdgeInsets.symmetric(
+                                              horizontal: 20,
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
                                     if (search.isEmpty)
                                       IconButton(
                                         onPressed: controller.toggleChips,
