@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -320,7 +321,10 @@ class _HeroAppearanceWidget extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        const Text('Gender: '),
+                        const Text(
+                          'Gender: ',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         Text(
                           gender == null
                               ? '❓'
@@ -335,14 +339,20 @@ class _HeroAppearanceWidget extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text('Race: '),
+                          const Text(
+                            'Race: ',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
                           Text(appearance!.race),
                         ],
                       ),
                     ),
                     Row(
                       children: [
-                        const Text('Height: '),
+                        const Text(
+                          'Height: ',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         Row(
                           children: [
                             Text(appearance!.height.last),
@@ -357,7 +367,10 @@ class _HeroAppearanceWidget extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text('Weight: '),
+                          const Text(
+                            'Weight: ',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
                           Row(
                             children: [
                               Text(appearance!.weight.last),
@@ -370,7 +383,10 @@ class _HeroAppearanceWidget extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        const Text('Eye Color: '),
+                        const Text(
+                          'Eye Color: ',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         Text(appearance!.eyeColor),
                       ],
                     ),
@@ -379,7 +395,10 @@ class _HeroAppearanceWidget extends StatelessWidget {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text('Hair Color: '),
+                          const Text(
+                            'Hair Color: ',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
                           Text(appearance!.hairColor),
                         ],
                       ),
@@ -439,7 +458,10 @@ class _HeroBiographyWidget extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text('Full Name: '),
+                        const Text(
+                          'Full Name: ',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         Text(biography!.fullName),
                       ],
                     ),
@@ -448,7 +470,10 @@ class _HeroBiographyWidget extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text('Alter Egos: '),
+                          const Text(
+                            'Alter Egos: ',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
                           Text(biography!.alterEgos),
                         ],
                       ),
@@ -456,7 +481,10 @@ class _HeroBiographyWidget extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text('Aliases: '),
+                        const Text(
+                          'Aliases: ',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children:
@@ -469,7 +497,10 @@ class _HeroBiographyWidget extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text('Place of Birth: '),
+                          const Text(
+                            'Place of Birth: ',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
                           Text(biography!.placeOfBirth),
                         ],
                       ),
@@ -477,7 +508,10 @@ class _HeroBiographyWidget extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text('First Appearance: '),
+                        const Text(
+                          'First Appearance: ',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         Text(biography!.firstAppearance),
                       ],
                     ),
@@ -486,7 +520,10 @@ class _HeroBiographyWidget extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text('Publisher: '),
+                          const Text(
+                            'Publisher: ',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
                           Text(biography!.publisher),
                         ],
                       ),
@@ -494,7 +531,10 @@ class _HeroBiographyWidget extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text('Alignment: '),
+                        const Text(
+                          'Alignment: ',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         Text(biography!.alignment),
                       ],
                     ),
@@ -553,7 +593,10 @@ class _HeroWorkWidget extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text('Occupation: '),
+                        const Text(
+                          'Occupation: ',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         Text(work!.occupation),
                       ],
                     ),
@@ -562,7 +605,10 @@ class _HeroWorkWidget extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text('Base: '),
+                          const Text(
+                            'Base: ',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
                           Text(work!.base),
                         ],
                       ),
@@ -621,7 +667,10 @@ class _HeroConnectionsWidget extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text('Occupation: '),
+                        const Text(
+                          'Occupation: ',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         Text(connections!.groupAffiliation),
                       ],
                     ),
@@ -630,7 +679,10 @@ class _HeroConnectionsWidget extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text('Relatives: '),
+                          const Text(
+                            'Relatives: ',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
                           Text(connections!.relatives),
                         ],
                       ),
