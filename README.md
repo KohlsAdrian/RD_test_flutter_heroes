@@ -28,3 +28,15 @@ A new Flutter project.
 ### Easter Eggs
 
 - If you make a filter and the result contains only specific publishers, background animated particles will match filtered publishers only
+
+
+### Screenshots
+
+<img src="flutter_01.png" width="195px" height="422px">
+<img src="flutter_02.png" width="195px" height="422px">
+<img src="flutter_03.png" width="195px" height="422px">
+<img src="flutter_04.png" width="195px" height="422px">
+<img src="flutter_05.png" width="195px" height="422px">
+<img src="flutter_06.png" width="195px" height="422px">
+<img src="flutter_07.png" width="195px" height="422px">
+<img src="flutter_08.png" width="195px" height="422px">
