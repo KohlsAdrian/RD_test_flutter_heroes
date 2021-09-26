@@ -22,6 +22,8 @@ A new Flutter project.
 
 - Small animations
 
+- Added custom level system
+
 - Non Marvel or DC publishers are green Publishers with no publisher image
 
 
@@ -45,3 +47,8 @@ A new Flutter project.
     <img src="flutter_07.png" width="195px" height="422px">
     <img src="flutter_08.png" width="195px" height="422px">
 </p>
+
+
+### Unit tests (see: test/counter_test.dart)
+
+<img src="flutter_test.png">
