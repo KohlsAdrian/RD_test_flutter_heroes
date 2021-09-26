@@ -1,7 +1,7 @@
 import 'package:rd_test_flutter_heroes/models/heroes_model.dart';
 import 'package:rd_test_flutter_heroes/services/heroes_service.dart';
 
-class LoadHeroes {
+class TestHeroes {
   Future<Iterable<HeroesModel>?> retrieveAll() async {
     final heroes = await HeroesService.instance.getHeroes();
     return heroes;
