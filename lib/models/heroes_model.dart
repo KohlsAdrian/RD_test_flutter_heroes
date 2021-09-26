@@ -71,6 +71,17 @@ class PowerStatsModel {
     this.combat,
   );
 
+  int get level {
+    double xp = intelligence * 1.2;
+    xp += strength * 0.5;
+    xp += speed * 0.7;
+    xp += durability * 0.9;
+    xp += power * 0.5;
+    xp += combat * 0.6;
+
+    return xp.toInt();
+  }
+
   factory PowerStatsModel.fromJson(Map json) {
     int intelligence = json['intelligence'];
     int strength = json['strength'];

@@ -142,6 +142,7 @@ class _HeroPowerStatsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context);
     final size = mq.size;
+    final lvl = powerStats?.level ?? '?';
     return Container(
       margin: const EdgeInsets.all(20),
       padding: const EdgeInsets.symmetric(
@@ -161,6 +162,15 @@ class _HeroPowerStatsWidget extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          Text(
+            'Lv. $lvl',
+            style: TextStyle(
+              fontSize: size.width * 0.07,
+              color: Colors.indigo,
+              fontWeight: FontWeight.bold,
+              fontStyle: FontStyle.italic,
+            ),
+          ),
           Text(
             'Power Stats',
             style: TextStyle(

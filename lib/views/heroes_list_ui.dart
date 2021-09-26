@@ -3,6 +3,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -38,8 +39,11 @@ class HeroesListUI extends StatelessWidget {
             (h) {
               final name = h.safeName.toLowerCase();
               final publisher = h.biography.publisher.toLowerCase();
+              final lvl = h.powerStats.level;
 
-              return name.contains(search) || publisher.contains(search);
+              return name.contains(search) ||
+                  publisher.contains(search) ||
+                  lvl.toString().contains(search);
             },
           );
         } else {
@@ -98,6 +102,8 @@ class HeroesListUI extends StatelessWidget {
                         final hero = heroes.elementAt(index);
 
                         final fullName = hero.safeName;
+
+                        final lvl = hero.powerStats.level;
 
                         final images = hero.images;
                         final thumbnail = images.sm;
@@ -183,6 +189,15 @@ class HeroesListUI extends StatelessWidget {
                                             style: TextStyle(
                                               color: Colors.black,
                                               fontSize: size.width * 0.05,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Lv. $lvl',
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                              color: Colors.indigo,
+                                              fontSize: size.width * 0.03,
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),
